@@ -25,6 +25,8 @@ if [[ "$VERSION" == "stable" ]]; then
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
 else
+    VERSION="selection"
+    REPO="https://github.com/truebluejason/autogluon.git"
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
     git clone --depth 1 --single-branch --branch ${VERSION} --recurse-submodules ${REPO} ${TARGET_DIR}
