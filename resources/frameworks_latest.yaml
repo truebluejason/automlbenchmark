@@ -19,6 +19,13 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
+AutoGluon_custom:
+  extends: AutoGluon
+  params:
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 3
+
 AutoGluon_holdout:
   extends: AutoGluon
   params:
