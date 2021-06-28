@@ -19,12 +19,21 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
-AutoGluon_custom:
+AutoGluon_prune_1:
   extends: AutoGluon
   params:
     ag_args:
       fit_with_prune_kwargs:
         max_num_fit: 3
+        prune_threshold: 0.
+
+AutoGluon_prune_2:
+  extends: AutoGluon
+  params:
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 3
+        prune_threshold: -0.005
 
 AutoGluon_holdout:
   extends: AutoGluon
