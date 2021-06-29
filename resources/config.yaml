@@ -1,5 +1,5 @@
 ---
-project_repository: https://github.com/truebluejason/automlbenchmark/tree/selection      # this is also the url used to clone the repository on ec2 instances
+project_repository: https://github.com/truebluejason/automlbenchmark#featprune     # this is also the url used to clone the repository on ec2 instances
                                                                           # when running those without docker.
                                                                           # to clone a specific branch/tag, add a url fragment, e.g.:
                                                                           # https://github.com/openml/automlbenchmark#stable
@@ -46,7 +46,7 @@ benchmarks:                     # configuration namespace for the benchmarks def
                                      #   if 'fail' the benchmark will be immediately interrupted;
   os_mem_size_mb: 2048          # the default amount of memory left to the OS when task assigned memory is computed automatically.
   os_vol_size_mb: 2048          # the default amount of volume left to the OS when task volume memory is verified.
-  overhead_time_seconds: 3600   # amount of additional time allowed for the job to complete before sending an interruption signal
+  overhead_time_seconds: 72000   # amount of additional time allowed for the job to complete before sending an interruption signal
   metrics:                      # default metrics by dataset type (as listed by amlb.data.DatasetType),
                                 # only the first metric is optimized by the frameworks,
                                 # the others are computed only for information purpose.
@@ -120,17 +120,17 @@ aws:                    # configuration namespace for AWS mode.
                                                      # if temporary is set to true, the generated instance profile name will be `<instance_profile_name>-<now>`.
     temporary: false                                 # if true, the IAM entities will be automatically recreated during setup and deleted at the end of the benchmark run.
     credentials_propagation_waiting_time_secs: 360   # time to wait before being able to start ec2 instances when using new or temporary credentials.
-    max_role_session_duration_secs: 7200             # the max duration (in seconds) during which the ec2 instance will have access to s3.
+    max_role_session_duration_secs: 72000             # the max duration (in seconds) during which the ec2 instance will have access to s3.
                                                      # This should be a number between 900 (15mn) to 43200 (12h).
 
   s3:                               # sub-namespace for AWS S3 service.
-    bucket: jasonjsy        # must be unique im whole Amazon s3, max 40 chars, and include only numbers, lowercase characters and hyphens.
+    bucket: automl-benchmark-jasonjsy        # must be unique im whole Amazon s3, max 40 chars, and include only numbers, lowercase characters and hyphens.
                                     # if temporary is set to true, the generated bucket name will be `<bucket>-<now>`.
                                     # cf. complete restrictions: https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
     temporary: false                # if true, the S3 bucket is created during setup and deleted at the end of the benchmark run.
                                     # Note that for safety reasons, the bucket is then created with a generated name: <s3.bucket>-<now>.
                                     # if false, the real <s3.bucket> name is used (after creation if it doesn't exists), but never deleted.
-    root_key: ec2/basic/                  #
+    root_key: ec2/testing/                  #
     delete_resources: false         #
 
   ec2:
