@@ -30,3 +30,8 @@ test:
   cores: 8
   min_vol_size_mb: 100000
 
+12h8c:
+  folds: 10
+  max_runtime_seconds: 43200
+  cores: 8
+  min_vol_size_mb: 100000
