@@ -24,8 +24,8 @@ AutoGluon_prune_uniform:
   params:
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 10
-        stop_threshold: 3
+        max_num_fit: 3
+        stop_threshold: 1
         prune_ratio: 0.05
         subsample_size: 5000
         fi_strategy: "uniform"
@@ -36,8 +36,8 @@ AutoGluon_prune_backwardsearch:
   params:
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 10
-        stop_threshold: 3
+        max_num_fit: 3
+        stop_threshold: 1
         prune_ratio: 0.05
         subsample_size: 5000
         fi_strategy: "backwardsearch"
@@ -49,8 +49,8 @@ AutoGluon_prune_uniform_bestquality:
     num_bag_sets: 1
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 10
-        stop_threshold: 3
+        max_num_fit: 3
+        stop_threshold: 1
         prune_ratio: 0.05
         subsample_size: 5000
         fi_strategy: "uniform"
@@ -62,8 +62,8 @@ AutoGluon_prune_backwardsearch_bestquality:
     num_bag_sets: 1
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 10
-        stop_threshold: 3
+        max_num_fit: 3
+        stop_threshold: 1
         prune_ratio: 0.05
         subsample_size: 5000
         fi_strategy: "backwardsearch"
