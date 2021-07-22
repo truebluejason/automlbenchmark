@@ -25,6 +25,10 @@ if [[ "$VERSION" == "stable" ]]; then
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
 else
+    # FIXME: HACK
+    # VERSION="tabular_stack_holdout"
+    # REPO="https://github.com/gradientsky/autogluon.git"
+
     VERSION="selection"
     REPO="https://github.com/truebluejason/autogluon.git"
     TARGET_DIR="${HERE}/lib/${PKG}"

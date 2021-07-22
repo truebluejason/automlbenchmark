@@ -83,13 +83,6 @@ AutoGluon_bestquality_bayesopt:
     presets: best_quality
     hyperparameter_tune_kwargs: 'bayesopt'
 
-AutoGluon_custom:
-  extends: AutoGluon
-  params:
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-
 autosklearn:
   version: 'latest'
 
