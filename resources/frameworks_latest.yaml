@@ -19,21 +19,29 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
-AutoGluon_prune_1:
+AutoGluon_prune_uniform:
   extends: AutoGluon
   params:
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 3
-        prune_threshold: 0.
+        max_num_fit: 10
+        stop_threshold: 10
+        prune_ratio: 0.1
+        subsample_size: 5000
+        fi_strategy: "uniform"
+        fp_strategy: "percentage"
 
-AutoGluon_prune_2:
+AutoGluon_prune_backwardsearch:
   extends: AutoGluon
   params:
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 3
-        prune_threshold: -0.005
+        max_num_fit: 10
+        stop_threshold: 10
+        prune_ratio: 0.1
+        subsample_size: 5000
+        fi_strategy: "backwardsearch"
+        fp_strategy: "single"
 
 AutoGluon_holdout:
   extends: AutoGluon
