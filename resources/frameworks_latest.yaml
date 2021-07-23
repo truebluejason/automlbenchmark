@@ -27,6 +27,7 @@ AutoGluon_prune_uniform:
         max_num_fit: 3
         stop_threshold: 1
         prune_ratio: 0.05
+        prune_threshold: 0.0
         subsample_size: 5000
         fi_strategy: "uniform"
         fp_strategy: "percentage"
@@ -52,6 +53,7 @@ AutoGluon_prune_uniform_bestquality:
         max_num_fit: 3
         stop_threshold: 1
         prune_ratio: 0.05
+        prune_threshold: 0.0
         subsample_size: 5000
         fi_strategy: "uniform"
         fp_strategy: "percentage"
