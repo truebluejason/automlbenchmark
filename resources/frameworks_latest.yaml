@@ -44,6 +44,11 @@ AutoGluon_prune_backwardsearch:
         fi_strategy: "backwardsearch"
         fp_strategy: "single"
 
+AutoGluon_bestquality_norepeat:
+  extends: AutoGluon_bestquality
+  params:
+    num_bag_sets: 1
+
 AutoGluon_prune_uniform_bestquality:
   extends: AutoGluon_bestquality
   params:
