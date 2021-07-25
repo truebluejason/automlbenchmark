@@ -52,6 +52,7 @@ AutoGluon_bestquality_norepeat:
 AutoGluon_prune_uniform_bestquality:
   extends: AutoGluon_bestquality
   params:
+    presets: best_quality
     num_bag_sets: 1
     ag_args:
       fit_with_prune_kwargs:
@@ -66,6 +67,7 @@ AutoGluon_prune_uniform_bestquality:
 AutoGluon_prune_backwardsearch_bestquality:
   extends: AutoGluon_bestquality
   params:
+    presets: best_quality
     num_bag_sets: 1
     ag_args:
       fit_with_prune_kwargs:
