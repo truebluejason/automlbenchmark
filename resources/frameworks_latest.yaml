@@ -63,6 +63,8 @@ AutoGluon_prune_uniform_bestquality:
         subsample_size: 5000
         fi_strategy: "uniform"
         fp_strategy: "percentage"
+    ag_args_ensemble:
+      use_child_oof: False
 
 AutoGluon_prune_backwardsearch_bestquality:
   extends: AutoGluon_bestquality
@@ -77,6 +79,8 @@ AutoGluon_prune_backwardsearch_bestquality:
         subsample_size: 5000
         fi_strategy: "backwardsearch"
         fp_strategy: "single"
+    ag_args_ensemble:
+      use_child_oof: False
 
 AutoGluon_holdout:
   extends: AutoGluon
