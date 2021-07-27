@@ -31,6 +31,7 @@ AutoGluon_prune_uniform:
         subsample_size: 5000
         fi_strategy: "uniform"
         fp_strategy: "percentage"
+    _leaderboard_test: True
 
 AutoGluon_prune_backwardsearch:
   extends: AutoGluon
@@ -43,6 +44,7 @@ AutoGluon_prune_backwardsearch:
         subsample_size: 5000
         fi_strategy: "backwardsearch"
         fp_strategy: "single"
+    _leaderboard_test: True
 
 AutoGluon_bestquality_nochildoof:
   extends: AutoGluon_bestquality
@@ -51,6 +53,7 @@ AutoGluon_bestquality_nochildoof:
     _leaderboard_test: True
     ag_args_ensemble:
       use_child_oof: False
+    _leaderboard_test: True
 
 AutoGluon_bestquality_norepeat:
   extends: AutoGluon_bestquality
@@ -60,6 +63,7 @@ AutoGluon_bestquality_norepeat:
     _leaderboard_test: True
     ag_args_ensemble:
       use_child_oof: False
+    _leaderboard_test: True
 
 AutoGluon_prune_uniform_bestquality:
   extends: AutoGluon_bestquality
@@ -77,6 +81,7 @@ AutoGluon_prune_uniform_bestquality:
         fp_strategy: "percentage"
     ag_args_ensemble:
       use_child_oof: False
+    _leaderboard_test: True
 
 AutoGluon_prune_backwardsearch_bestquality:
   extends: AutoGluon_bestquality
@@ -93,6 +98,7 @@ AutoGluon_prune_backwardsearch_bestquality:
         fp_strategy: "single"
     ag_args_ensemble:
       use_child_oof: False
+    _leaderboard_test: True
 
 AutoGluon_holdout:
   extends: AutoGluon
