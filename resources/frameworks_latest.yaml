@@ -59,7 +59,6 @@ AutoGluon_bestquality_norepeat:
   params:
     presets: best_quality
     num_bag_sets: 1
-    _leaderboard_test: True
     ag_args_ensemble:
       use_child_oof: False
     _leaderboard_test: True
