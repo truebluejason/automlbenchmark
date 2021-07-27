@@ -50,7 +50,6 @@ AutoGluon_bestquality_nochildoof:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    _leaderboard_test: True
     ag_args_ensemble:
       use_child_oof: False
     _leaderboard_test: True
