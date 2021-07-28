@@ -26,7 +26,7 @@ AutoGluon_prune_uniform:
       fit_with_prune_kwargs:
         max_num_fit: 3
         stop_threshold: 1
-        prune_ratio: 0.05
+        prune_ratio: 0.1
         prune_threshold: 0.0
         subsample_size: 5000
         fi_strategy: "uniform"
@@ -40,7 +40,7 @@ AutoGluon_prune_backwardsearch:
       fit_with_prune_kwargs:
         max_num_fit: 3
         stop_threshold: 1
-        prune_ratio: 0.05
+        prune_ratio: 0.1
         subsample_size: 5000
         fi_strategy: "backwardsearch"
         fp_strategy: "single"
@@ -72,7 +72,7 @@ AutoGluon_prune_uniform_bestquality:
       fit_with_prune_kwargs:
         max_num_fit: 3
         stop_threshold: 1
-        prune_ratio: 0.05
+        prune_ratio: 0.1
         prune_threshold: 0.0
         subsample_size: 5000
         fi_strategy: "uniform"
@@ -90,7 +90,7 @@ AutoGluon_prune_backwardsearch_bestquality:
       fit_with_prune_kwargs:
         max_num_fit: 3
         stop_threshold: 1
-        prune_ratio: 0.05
+        prune_ratio: 0.1
         subsample_size: 5000
         fi_strategy: "backwardsearch"
         fp_strategy: "single"
