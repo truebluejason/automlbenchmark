@@ -63,11 +63,28 @@ AutoGluon_bestquality_norepeat:
       use_child_oof: False
     _leaderboard_test: True
 
-AutoGluon_prune_uniform_bestquality:
+AutoGluon_prune_uniform_bestquality_norepeat:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
     num_bag_sets: 1
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 3
+        stop_threshold: 1
+        prune_ratio: 0.1
+        prune_threshold: 0.0
+        subsample_size: 5000
+        fi_strategy: "uniform"
+        fp_strategy: "percentage"
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
+AutoGluon_prune_uniform_bestquality:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
     ag_args:
       fit_with_prune_kwargs:
         max_num_fit: 3
