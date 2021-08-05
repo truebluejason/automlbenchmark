@@ -45,4 +45,4 @@ else
     PIP install -e autogluon/
 fi
 
-PY -c "from autogluon.tabular.version import __version__; print(__version__)" >> "${HERE}/.installed"
+PY -c "from autogluon.tabular.version import __version__; print(__version__)" >> "${HERE}/.setup/installed"
