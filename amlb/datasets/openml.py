@@ -241,8 +241,9 @@ class ArffSplitter(DataSplitter[str]):
             attributes = [(c,
                            ('INTEGER' if pat.is_integer_dtype(dt)
                             else 'REAL' if pat.is_float_dtype(dt)
-                            else 'NUMERIC' if pat.is_numeric_dtype(dt)
-                            # else ['0', '1'] if pat.is_bool_dtype(dt)
+                           # columns with all values missing will be interpreted as string by default,
+                           # but we can use openml meta-data to find out if it should be considered numeric instead.
+                            else 'NUMERIC' if pat.is_numeric_dtype(dt) or self._is_numeric(c)
                             else self._get_categorical_values(c) if pat.is_categorical_dtype(dt)
                             else 'STRING'
                            ))
@@ -254,9 +255,21 @@ class ArffSplitter(DataSplitter[str]):
                 data=df.values
             ), file)
 
+    def _is_numeric(self, col):
+        feat = next((f for f in self.ds._oml_dataset.features.values() if f.name == col), None)
+        return feat.data_type.lower() == "numeric"
+
     def _get_categorical_values(self, col):
         feat = next((f for f in self.ds._oml_dataset.features.values() if f.name == col), None)
-        return feat.nominal_values if feat is not None else None
+        if feat is not None:
+            # openml-python converts categorical features which look boolean to
+            # boolean values, which always write values as 'True' and 'False',
+            # so we need to adapt the header accordingly.
+            # Not doing so causes an issue in the R packages.
+            if set(v.lower() for v in feat.nominal_values) == {"true", "false"}:
+                return sorted(v.lower().capitalize() for v in feat.nominal_values)
+            return sorted(feat.nominal_values)
+        return None
 
 
 class CsvSplitter(DataSplitter[str]):

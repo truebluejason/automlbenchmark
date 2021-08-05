@@ -20,7 +20,7 @@ def _import_data_libraries():
 
 ser_config = ns(
     # 'pickle', 'parquet', 'hdf', 'json'
-    pandas_serializer=os.environ.get('AMLB_SER_PD_MODE') or 'pickle',
+    pandas_serializer=os.environ.get('AMLB_SER_PD_MODE') or 'parquet',
     # 'infer', 'bz2', 'gzip', None ?
     # 'infer' (here=None) is the fastest but no compression,
     # 'gzip' fast write and read with good compression.
@@ -38,6 +38,10 @@ __series__ = '_series_'
 def serialize_data(data, path):
     np, pd = _import_data_libraries()
     if pd and isinstance(data, (pd.DataFrame, pd.Series)):
+        if isinstance(data, pd.DataFrame):
+            # pandas has this habit of inferring value types when data are loaded from file,
+            # for example, 'true' and 'false' are converted automatically to booleans, even for column names…
+            data.rename(str, axis='columns', inplace=True)
         ser = ser_config.pandas_serializer
         if ser == 'pickle':
             data.to_pickle(path, compression=ser_config.pandas_compression)
