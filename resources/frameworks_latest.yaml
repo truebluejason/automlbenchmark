@@ -19,48 +19,6 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
-AutoGluon_prune_uniform:
-  extends: AutoGluon
-  params:
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-        stop_threshold: 1
-        prune_ratio: 0.1
-        prune_threshold: 0.0
-        subsample_size: 5000
-        fi_strategy: "uniform"
-        fp_strategy: "percentage"
-    _leaderboard_test: True
-
-AutoGluon_prune_uniform_prefit:
-  extends: AutoGluon
-  params:
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-        stop_threshold: 1
-        prune_ratio: 0.1
-        prune_threshold: 0.0
-        subsample_size: 5000
-        fi_strategy: "uniform"
-        fp_strategy: "percentage"
-        prune_after_fit: False
-    _leaderboard_test: True
-
-AutoGluon_prune_backwardsearch:
-  extends: AutoGluon
-  params:
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-        stop_threshold: 1
-        prune_ratio: 0.1
-        subsample_size: 5000
-        fi_strategy: "backwardsearch"
-        fp_strategy: "single"
-    _leaderboard_test: True
-
 AutoGluon_bestquality_nochildoof:
   extends: AutoGluon_bestquality
   params:
@@ -78,73 +36,51 @@ AutoGluon_bestquality_norepeat:
       use_child_oof: False
     _leaderboard_test: True
 
-AutoGluon_prune_uniform_bestquality_norepeat:
+AutoGluon_prune:
+  extends: AutoGluon
+  params:
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 10
+        stop_threshold: 1
+        prune_ratio: 0.05
+        prune_threshold: 0.0
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+    _leaderboard_test: True
+
+AutoGluon_prune_bestquality:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 10
+        stop_threshold: 1
+        prune_ratio: 0.05
+        prune_threshold: 0.0
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
+AutoGluon_prune_bestquality_norepeat:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
     num_bag_sets: 1
     ag_args:
       fit_with_prune_kwargs:
-        max_num_fit: 3
+        max_num_fit: 10
         stop_threshold: 1
-        prune_ratio: 0.1
+        prune_ratio: 0.05
         prune_threshold: 0.0
-        subsample_size: 5000
-        fi_strategy: "uniform"
-        fp_strategy: "percentage"
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_uniform_bestquality_norepeat_prefit:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-        stop_threshold: 1
-        prune_ratio: 0.1
-        prune_threshold: 0.0
-        subsample_size: 5000
-        fi_strategy: "uniform"
-        fp_strategy: "percentage"
-        prune_after_fit: False
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_uniform_bestquality:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-        stop_threshold: 1
-        prune_ratio: 0.1
-        prune_threshold: 0.0
-        subsample_size: 5000
-        fi_strategy: "uniform"
-        fp_strategy: "percentage"
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_backwardsearch_bestquality:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      fit_with_prune_kwargs:
-        max_num_fit: 3
-        stop_threshold: 1
-        prune_ratio: 0.1
-        subsample_size: 5000
-        fi_strategy: "backwardsearch"
-        fp_strategy: "single"
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
     _leaderboard_test: True
