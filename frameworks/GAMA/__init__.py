@@ -9,8 +9,6 @@ def setup(*args, **kwargs):
 
 def run(dataset: Dataset, config: TaskConfig):
     from frameworks.shared.caller import run_in_venv
-    from frameworks.shared.serialization import ser_config
-    ser_config.pandas_serializer = 'parquet'  # can't use pickle due to pandas version mismatch
 
     data = dict(
         target=dataset.target.name,
@@ -25,7 +23,10 @@ def run(dataset: Dataset, config: TaskConfig):
             y=dataset.test.y
         ),
     )
+    options = dict(
+        serialization=dict(sparse_dataframe_deserialized_format='dense')
+    )
 
     return run_in_venv(__file__, "exec.py",
-                       input_data=data, dataset=dataset, config=config)
+                       input_data=data, dataset=dataset, config=config, options=options)
 

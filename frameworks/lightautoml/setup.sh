@@ -10,6 +10,7 @@ fi
 # creating local venv
 . ${HERE}/../shared/setup.sh ${HERE} true
 
+apt-get install -y python3-opencv
 
 if [[ "$VERSION" == "stable" ]]; then
     PIP install --no-cache-dir -U ${PKG}
@@ -23,4 +24,4 @@ else
     bash build_package.sh
 fi
 
-PY -c "import matplotlib; matplotlib.use('agg'); from lightautoml import __version__; print(__version__)" >> "${HERE}/.installed"
+PY -c "import matplotlib; matplotlib.use('agg'); from lightautoml import __version__; print(__version__)" >> "${HERE}/.setup/installed"
