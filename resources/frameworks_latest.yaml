@@ -67,6 +67,23 @@ AutoGluon_prune_bestquality:
       use_child_oof: False
     _leaderboard_test: True
 
+AutoGluon_autoprune_bestquality:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 10
+        stop_threshold: 1
+        prune_ratio: 0.05
+        prune_threshold: null
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
 AutoGluon_prune_bestquality_norepeat:
   extends: AutoGluon_bestquality
   params:
@@ -78,6 +95,24 @@ AutoGluon_prune_bestquality_norepeat:
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
+AutoGluon_autoprune_bestquality_norepeat:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    ag_args:
+      fit_with_prune_kwargs:
+        max_num_fit: 10
+        stop_threshold: 1
+        prune_ratio: 0.05
+        prune_threshold: null
         train_subsample_size: 50000
         fi_subsample_size: 5000
         min_fi_samples: 10000
