@@ -25,6 +25,7 @@ log = logging.getLogger(__name__)
 
 
 def run(dataset, config):
+    log.info(config)
     log.info(f"\n**** AutoGluon [v{__version__}] ****\n")
 
     metrics_mapping = dict(
@@ -93,6 +94,15 @@ def run(dataset, config):
         num_models_ensemble = len(predictor._trainer.get_minimum_model_set(predictor._trainer.model_best))
     else:
         num_models_ensemble = 1
+
+    debug_info = predictor._learner.trainer._debug_info
+    proxy_debug_info = debug_info.get('proxy_model', None)
+    if proxy_debug_info is not None:
+        info_content = {'name': config.name, 'fold': config.fold}
+        info_content.update(proxy_debug_info)
+        df = pd.DataFrame({k: [v] for k, v in info_content.items()})
+        save_path = os.path.join(config.output_dir, 'debug_info.csv')
+        df.to_csv(save_path, index=False)
 
     save_artifacts(predictor, leaderboard, config)
     shutil.rmtree(predictor.path, ignore_errors=True)
