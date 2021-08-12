@@ -96,14 +96,17 @@ def run(dataset, config):
         num_models_ensemble = 1
 
     debug_info = predictor._learner.trainer._debug_info
-    default_debug_info = {'exceptions': [],
-                          'index_trajectory': [],
-                          'total_prune_time': 0.,
-                          'total_prune_fit_time': 0.,
-                          'total_prune_fi_time': 0.,
-                          'score_improvement_from_proxy_yes': 0,
-                          'score_improvement_from_proxy_no': 0}
-    proxy_debug_info = debug_info.get('proxy_model', default_debug_info)
+    default_proxy_debug_info = {'exceptions': [],
+                                'index_trajectory': [],
+                                'total_prune_time': 0.,
+                                'total_prune_fit_time': 0.,
+                                'total_prune_fi_time': 0.,
+                                'score_improvement_from_proxy_yes': 0,
+                                'score_improvement_from_proxy_no': 0}
+    if debug_info.get('proxy_model', None) is None:
+        proxy_debug_info = default_proxy_debug_info
+    else:
+        proxy_debug_info = debug_info.get('proxy_model')
     pruned = proxy_debug_info is not None and\
         (proxy_debug_info.get('score_improvement_from_proxy_yes', 0) > 0 or
          proxy_debug_info.get('score_improvement_from_proxy_yes', 0) > 0)
