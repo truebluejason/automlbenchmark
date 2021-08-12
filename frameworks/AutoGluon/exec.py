@@ -104,7 +104,9 @@ def run(dataset, config):
                           'score_improvement_from_proxy_yes': 0,
                           'score_improvement_from_proxy_no': 0}
     proxy_debug_info = debug_info.get('proxy_model', default_debug_info)
-    pruned = proxy_debug_info is not None
+    pruned = proxy_debug_info is not None and\
+        (proxy_debug_info.get('score_improvement_from_proxy_yes', 0) > 0 or
+         proxy_debug_info.get('score_improvement_from_proxy_yes', 0) > 0)
     info_content = {'name': config.name, 'fold': config.fold, 'pruned': pruned}
     info_content.update(proxy_debug_info)
     df = pd.DataFrame({k: [v] for k, v in info_content.items()})
