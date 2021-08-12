@@ -96,13 +96,20 @@ def run(dataset, config):
         num_models_ensemble = 1
 
     debug_info = predictor._learner.trainer._debug_info
-    proxy_debug_info = debug_info.get('proxy_model', None)
-    if proxy_debug_info is not None:
-        info_content = {'name': config.name, 'fold': config.fold}
-        info_content.update(proxy_debug_info)
-        df = pd.DataFrame({k: [v] for k, v in info_content.items()})
-        save_path = os.path.join(config.output_dir, 'debug_info.csv')
-        df.to_csv(save_path, index=False)
+    default_debug_info = {'exceptions': [],
+                          'index_trajectory': [],
+                          'total_prune_time': 0.,
+                          'total_prune_fit_time': 0.,
+                          'total_prune_fi_time': 0.,
+                          'score_improvement_from_proxy_yes': 0,
+                          'score_improvement_from_proxy_no': 0}
+    proxy_debug_info = debug_info.get('proxy_model', default_debug_info)
+    pruned = proxy_debug_info is not None
+    info_content = {'name': config.name, 'fold': config.fold, 'pruned': pruned}
+    info_content.update(proxy_debug_info)
+    df = pd.DataFrame({k: [v] for k, v in info_content.items()})
+    save_path = os.path.join(config.output_dir, 'debug_info.csv')
+    df.to_csv(save_path, index=False)
 
     save_artifacts(predictor, leaderboard, config)
     shutil.rmtree(predictor.path, ignore_errors=True)
