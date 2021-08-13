@@ -190,6 +190,43 @@ AutoGluon_autoprune_power_norepeat:
       use_child_oof: False
     _leaderboard_test: True
 
+AutoGluon_fullprune_bestquality_norepeat:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    ag_args:
+      feature_prune_kwargs:
+        max_num_fit: 10
+        stop_threshold: 1
+        prune_ratio: 0.05
+        prune_threshold: null
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+        proxy_model: False
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
+AutoGluon_fullprune_bestquality:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    ag_args:
+      feature_prune_kwargs:
+        max_num_fit: 10
+        stop_threshold: 1
+        prune_ratio: 0.05
+        prune_threshold: null
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+        proxy_model: False
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
 AutoGluon_holdout:
   extends: AutoGluon
   params:
