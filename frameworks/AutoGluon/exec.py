@@ -98,21 +98,26 @@ def run(dataset, config):
     debug_info = predictor._learner.trainer._debug_info
     default_proxy_debug_info = {'exceptions': [],
                                 'index_trajectory': [],
+                                'layer_fit_time': 0.,
                                 'total_prune_time': 0.,
                                 'total_prune_fit_time': 0.,
                                 'total_prune_fi_time': 0.,
                                 'score_improvement_from_proxy_yes': 0,
                                 'score_improvement_from_proxy_no': 0}
-    if debug_info.get('proxy_model', None) is None:
-        proxy_debug_info = default_proxy_debug_info
+    if len(debug_info.get('proxy_model', [])) == 0:
+        proxy_debug_info = [default_proxy_debug_info]
     else:
         proxy_debug_info = debug_info.get('proxy_model')
-    pruned = proxy_debug_info is not None and\
-        (proxy_debug_info.get('score_improvement_from_proxy_yes', 0) > 0 or
-         proxy_debug_info.get('score_improvement_from_proxy_yes', 0) > 0)
-    info_content = {'name': config.name, 'fold': config.fold, 'pruned': pruned}
-    info_content.update(proxy_debug_info)
-    df = pd.DataFrame({k: [v] for k, v in info_content.items()})
+    dfs = []
+    for layer, layer_debug_info in enumerate(proxy_debug_info):
+        pruned = len(layer_debug_info) > 0 and\
+                (layer_debug_info['score_improvement_from_proxy_yes'] > 0 or
+                 layer_debug_info['score_improvement_from_proxy_yes'] > 0)
+        info_content = {'name': config.name, 'fold': config.fold,
+                        'pruned': pruned, 'layer': layer}
+        info_content.update(layer_debug_info)
+        dfs.append(pd.DataFrame({k: [v] for k, v in info_content.items()}))
+    df = pd.concat(dfs)
     save_path = os.path.join(config.output_dir, 'debug_info.csv')
     df.to_csv(save_path, index=False)
 
