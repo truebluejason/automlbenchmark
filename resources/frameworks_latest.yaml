@@ -41,7 +41,7 @@ AutoGluon_prune:
   params:
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
@@ -56,7 +56,7 @@ AutoGluon_prune_bestquality:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
@@ -73,7 +73,7 @@ AutoGluon_prune_power:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: 0.0
@@ -90,7 +90,7 @@ AutoGluon_autoprune_bestquality:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
@@ -107,7 +107,7 @@ AutoGluon_autoprune_power:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
@@ -125,7 +125,7 @@ AutoGluon_prune_bestquality_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
@@ -143,7 +143,7 @@ AutoGluon_prune_power_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: 0.0
@@ -161,7 +161,7 @@ AutoGluon_autoprune_bestquality_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
@@ -179,7 +179,7 @@ AutoGluon_autoprune_power_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
@@ -197,7 +197,7 @@ AutoGluon_fullprune_bestquality_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
@@ -215,7 +215,7 @@ AutoGluon_fullprune_bestquality:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_num_fit: 10
+        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
