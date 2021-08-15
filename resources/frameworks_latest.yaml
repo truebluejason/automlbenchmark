@@ -50,6 +50,22 @@ AutoGluon_prune:
         min_fi_samples: 10000
     _leaderboard_test: True
 
+AutoGluon_autoprune:
+  extends: AutoGluon
+  params:
+    ag_args:
+      feature_prune_kwargs:
+        max_fits: 10
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+    ag_args_ensemble:
+      use_child_oof: False
+    _leaderboard_test: True
+
 AutoGluon_prune_bestquality:
   extends: AutoGluon_bestquality
   params:
