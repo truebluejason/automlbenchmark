@@ -103,7 +103,8 @@ def run(dataset, config):
                                 'total_prune_fit_time': 0.,
                                 'total_prune_fi_time': 0.,
                                 'score_improvement_from_proxy_yes': 0,
-                                'score_improvement_from_proxy_no': 0}
+                                'score_improvement_from_proxy_no': 0,
+                                'kept_ratio': 0.}
     if len(debug_info.get('proxy_model', [])) == 0:
         proxy_debug_info = [default_proxy_debug_info]
     else:
