@@ -206,6 +206,7 @@ AutoGluon_autoprune_power:
         train_subsample_size: 50000
         fi_subsample_size: 5000
         min_fi_samples: 10000
+        improvement_threshold: 0.
     ag_args_ensemble:
       use_child_oof: False
     _leaderboard_test: True
