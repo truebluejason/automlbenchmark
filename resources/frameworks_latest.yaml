@@ -34,10 +34,11 @@ prune:
         min_fi_samples: 10000
     _leaderboard_test: True
 
-prune_maxfits:
+prune_norepeat:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
+    num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
         max_fits: 50
