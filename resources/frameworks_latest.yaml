@@ -19,6 +19,13 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
+AutoGluon_norepeat:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    _leaderboard_test: True
+
 prune:
   extends: AutoGluon_bestquality
   params:
