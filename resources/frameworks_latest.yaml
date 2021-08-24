@@ -32,12 +32,11 @@ prune:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     _leaderboard_test: True
 
@@ -47,12 +46,11 @@ prune_maxk:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
         k: 20
     _leaderboard_test: True
@@ -64,12 +62,11 @@ prune_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 50
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     _leaderboard_test: True
 
@@ -80,12 +77,11 @@ prune_norepeat_maxk:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 50
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
         k: 20
     _leaderboard_test: True
@@ -96,12 +92,11 @@ prune_pruneratio:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.1
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     _leaderboard_test: True
 
@@ -111,12 +106,11 @@ prune_prunethreshold:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: 0.
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     _leaderboard_test: True
 
@@ -126,12 +120,11 @@ prune_improvementthreshold:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
         improvement_threshold: 0.
     _leaderboard_test: True
@@ -158,12 +151,11 @@ AutoGluon_prune:
   params:
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     _leaderboard_test: True
 
@@ -172,12 +164,11 @@ AutoGluon_autoprune:
   params:
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -189,12 +180,11 @@ AutoGluon_prune_bestquality:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -206,12 +196,11 @@ AutoGluon_prune_power:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: 0.0
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -223,12 +212,11 @@ AutoGluon_autoprune_bestquality:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -240,12 +228,11 @@ AutoGluon_autoprune_power:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -258,12 +245,11 @@ AutoGluon_prune_bestquality_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: 0.0
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -276,12 +262,11 @@ AutoGluon_prune_power_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: 0.0
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -294,12 +279,11 @@ AutoGluon_autoprune_bestquality_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -312,12 +296,11 @@ AutoGluon_autoprune_power_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 10
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
     ag_args_ensemble:
       use_child_oof: False
@@ -330,12 +313,11 @@ AutoGluon_fullprune_bestquality_norepeat:
     num_bag_sets: 1
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
         proxy_model: False
     ag_args_ensemble:
@@ -348,12 +330,11 @@ AutoGluon_fullprune_bestquality:
     presets: best_quality
     ag_args:
       feature_prune_kwargs:
-        max_fits: 10
         stop_threshold: 1
         prune_ratio: 0.05
         prune_threshold: null
-        train_subsample_size: 50000
-        fi_subsample_size: 5000
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
         min_fi_samples: 10000
         proxy_model: False
     ag_args_ensemble:
