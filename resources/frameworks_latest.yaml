@@ -41,6 +41,22 @@ prune:
         min_fi_samples: 10000
     _leaderboard_test: True
 
+prune_maxk:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    ag_args:
+      feature_prune_kwargs:
+        max_fits: 10
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+        k: 20
+    _leaderboard_test: True
+
 prune_norepeat:
   extends: AutoGluon_bestquality
   params:
@@ -55,6 +71,23 @@ prune_norepeat:
         train_subsample_size: 50000
         fi_subsample_size: 5000
         min_fi_samples: 10000
+    _leaderboard_test: True
+
+prune_norepeat_maxk:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    ag_args:
+      feature_prune_kwargs:
+        max_fits: 50
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        train_subsample_size: 50000
+        fi_subsample_size: 5000
+        min_fi_samples: 10000
+        k: 20
     _leaderboard_test: True
 
 prune_pruneratio:
