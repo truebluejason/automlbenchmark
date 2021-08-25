@@ -82,7 +82,7 @@ prune_maxfits:
         n_train_subsample: 50000
         n_fi_subsample: 5000
         min_fi_samples: 10000
-        maxfits: 10
+        max_fits: 10
     _leaderboard_test: True
 
 prune_norepeat:
