@@ -101,6 +101,22 @@ prune_norepeat_maxk:
         k: 20
     _leaderboard_test: True
 
+prune_norepeat_lgb:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
+        min_fi_samples: 10000
+        proxy_model_class: LGB
+    _leaderboard_test: True
+
 prune_pruneratio:
   extends: AutoGluon_bestquality
   params:
