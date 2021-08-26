@@ -19,6 +19,12 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
+AutoGluon_high:
+  extends: AutoGluon
+  params:
+    presets: high_quality_fast_inference_only_refit
+    _leaderboard_test: True
+
 AutoGluon_norepeat:
   extends: AutoGluon
   params:
@@ -191,6 +197,35 @@ prune_med:
 prune_maxfits_med:
   extends: AutoGluon
   params:
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
+        min_fi_samples: 10000
+        max_fits: 10
+    _leaderboard_test: True
+
+prune_high:
+  extends: AutoGluon
+  params:
+    presets: high_quality_fast_inference_only_refit
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
+        min_fi_samples: 10000
+    _leaderboard_test: True
+
+prune_maxfits_high:
+  extends: AutoGluon
+  params:
+    presets: high_quality_fast_inference_only_refit
     ag_args:
       feature_prune_kwargs:
         stop_threshold: 10
