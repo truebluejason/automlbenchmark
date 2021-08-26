@@ -106,6 +106,22 @@ prune_norepeat:
         min_fi_samples: 10000
     _leaderboard_test: True
 
+prune_norepeat_maxfits:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
+        min_fi_samples: 10000
+        max_fits: 10
+    _leaderboard_test: True
+
 prune_norepeat_maxk:
   extends: AutoGluon_bestquality
   params:
