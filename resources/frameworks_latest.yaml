@@ -46,6 +46,34 @@ prune:
         min_fi_samples: 10000
     _leaderboard_test: True
 
+prune_subsample:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 100000
+        min_fi_samples: 10000
+    _leaderboard_test: True
+
+prune_minfisamples:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
+        min_fi_samples: 5000
+    _leaderboard_test: True
+
 prune_nolgb:
   extends: AutoGluon_bestquality
   params:
@@ -224,6 +252,32 @@ prune_med:
         n_train_subsample: 50000
         n_fi_subsample: 5000
         min_fi_samples: 10000
+    _leaderboard_test: True
+
+prune_subsample_med:
+  extends: AutoGluon
+  params:
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 100000
+        min_fi_samples: 10000
+    _leaderboard_test: True
+
+prune_minfisamples_med:
+  extends: AutoGluon
+  params:
+    ag_args:
+      feature_prune_kwargs:
+        stop_threshold: 10
+        prune_ratio: 0.05
+        prune_threshold: null
+        n_train_subsample: 50000
+        n_fi_subsample: 5000
+        min_fi_samples: 5000
     _leaderboard_test: True
 
 prune_maxfits_med:
