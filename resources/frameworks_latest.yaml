@@ -137,12 +137,12 @@ prune_med:
     feature_prune_kwargs: {}
     _leaderboard_test: True
 
-prune_subsample_med:
-  extends: AutoGluon
-  params:
-   feature_prune_kwargs:
-      n_fi_subsample: 100000
-    _leaderboard_test: True
+# prune_subsample_med:
+#   extends: AutoGluon
+#   params:
+#    feature_prune_kwargs:
+#       n_fi_subsample: 100000
+#     _leaderboard_test: True
 
 prune_maxfits_med:
   extends: AutoGluon
