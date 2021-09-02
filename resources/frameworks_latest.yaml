@@ -36,102 +36,80 @@ prune:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
+    feature_prune_kwargs: {}
     _leaderboard_test: True
 
-prune_subsample:
+prune_stoppinground:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 100000
-        min_fi_samples: 10000
+    feature_prune_kwargs:
+      stopping_round: 1
     _leaderboard_test: True
 
-prune_minfisamples:
+prune_minimprovement:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 5000
+    feature_prune_kwargs:
+      min_improvement: 0.
     _leaderboard_test: True
 
-prune_nolgb:
+prune_notrainsubsample:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        proxy_model_class: best
+    feature_prune_kwargs:
+      n_train_subsample: null
+    _leaderboard_test: True
+
+prune_nofisubsample:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    feature_prune_kwargs:
+      n_fi_subsample: 100000
     _leaderboard_test: True
 
 prune_noweighted:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        weighted: False
+    feature_prune_kwargs:
+      weighted: False
     _leaderboard_test: True
 
 prune_maxk:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        k: 20
+    feature_prune_kwargs:
+      k: 20
     _leaderboard_test: True
 
-prune_maxfits:
+prune_nolgb:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        max_fits: 10
+    feature_prune_kwargs:
+      proxy_model_class: best
+    _leaderboard_test: True
+
+prune_prunethreshold:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    feature_prune_kwargs:
+      prune_threshold: 0.
+    _leaderboard_test: True
+
+prune_noprunethreshold:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    feature_prune_kwargs:
+      k: 20
+      prune_threshold: 1000000
     _leaderboard_test: True
 
 prune_norepeat:
@@ -139,15 +117,8 @@ prune_norepeat:
   params:
     presets: best_quality
     num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        k: 20
+    feature_prune_kwargs:
+      k: 20
     _leaderboard_test: True
 
 prune_norepeat_maxfits:
@@ -155,384 +126,44 @@ prune_norepeat_maxfits:
   params:
     presets: best_quality
     num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        max_fits: 10
-    _leaderboard_test: True
-
-prune_norepeat_maxk:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        k: 20
-    _leaderboard_test: True
-
-prune_norepeat_nolgb:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        proxy_model_class: best
-    _leaderboard_test: True
-
-prune_pruneratio:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.1
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    _leaderboard_test: True
-
-prune_prunethreshold:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: 0.
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    _leaderboard_test: True
-
-prune_improvementthreshold:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        improvement_threshold: 0.
+    feature_prune_kwargs:
+      k: 20
+      max_fits: 10
     _leaderboard_test: True
 
 prune_med:
   extends: AutoGluon
   params:
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
+    feature_prune_kwargs: {}
     _leaderboard_test: True
 
 prune_subsample_med:
   extends: AutoGluon
   params:
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 100000
-        min_fi_samples: 10000
-    _leaderboard_test: True
-
-prune_minfisamples_med:
-  extends: AutoGluon
-  params:
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 5000
+]   feature_prune_kwargs:
+      n_fi_subsample: 100000
     _leaderboard_test: True
 
 prune_maxfits_med:
   extends: AutoGluon
   params:
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        max_fits: 10
+    feature_prune_kwargs:
+      max_fits: 10
     _leaderboard_test: True
 
 prune_high:
   extends: AutoGluon
   params:
     presets: high_quality_fast_inference_only_refit
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
+    feature_prune_kwargs: {}
     _leaderboard_test: True
 
 prune_maxfits_high:
   extends: AutoGluon
   params:
     presets: high_quality_fast_inference_only_refit
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        max_fits: 10
-    _leaderboard_test: True
-
-AutoGluon_bestquality_nochildoof:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_bestquality_norepeat:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune:
-  extends: AutoGluon
-  params:
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: 0.0
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    _leaderboard_test: True
-
-AutoGluon_autoprune:
-  extends: AutoGluon
-  params:
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_bestquality:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: 0.0
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_power:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: 0.0
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_autoprune_bestquality:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_autoprune_power:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_bestquality_norepeat:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: 0.0
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_prune_power_norepeat:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: 0.0
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_autoprune_bestquality_norepeat:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_autoprune_power_norepeat:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 10
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_fullprune_bestquality_norepeat:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    num_bag_sets: 1
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        proxy_model: False
-    ag_args_ensemble:
-      use_child_oof: False
-    _leaderboard_test: True
-
-AutoGluon_fullprune_bestquality:
-  extends: AutoGluon_bestquality
-  params:
-    presets: best_quality
-    ag_args:
-      feature_prune_kwargs:
-        stop_threshold: 1
-        prune_ratio: 0.05
-        prune_threshold: null
-        n_train_subsample: 50000
-        n_fi_subsample: 5000
-        min_fi_samples: 10000
-        proxy_model: False
-    ag_args_ensemble:
-      use_child_oof: False
+    feature_prune_kwargs:
+      max_fits: 10
     _leaderboard_test: True
 
 AutoGluon_holdout:
