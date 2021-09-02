@@ -140,7 +140,7 @@ prune_med:
 prune_subsample_med:
   extends: AutoGluon
   params:
-]   feature_prune_kwargs:
+   feature_prune_kwargs:
       n_fi_subsample: 100000
     _leaderboard_test: True
 
