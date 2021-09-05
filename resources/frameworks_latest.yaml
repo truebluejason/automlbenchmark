@@ -108,8 +108,9 @@ prune_noprunethreshold:
   params:
     presets: best_quality
     feature_prune_kwargs:
+      stopping_round: 100
       k: 20
-      prune_threshold: 1000000
+      prune_threshold: 'none'
     _leaderboard_test: True
 
 prune_norepeat:
