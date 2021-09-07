@@ -39,12 +39,20 @@ prune:
     feature_prune_kwargs: {}
     _leaderboard_test: True
 
+prune_nevaluatedfeatures:
+  extends: AutoGluon_bestquality
+  params:
+    presets: best_quality
+    feature_prune_kwargs:
+      n_evaluated_features: 50
+    _leaderboard_test: True
+
 prune_stoppinground:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
     feature_prune_kwargs:
-      stopping_round: 1
+      stopping_round: null
     _leaderboard_test: True
 
 prune_minimprovement:
