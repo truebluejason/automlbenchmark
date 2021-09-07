@@ -39,12 +39,12 @@ prune:
     feature_prune_kwargs: {}
     _leaderboard_test: True
 
-prune_nevaluatedfeatures:
+prune_replacebag:
   extends: AutoGluon_bestquality
   params:
     presets: best_quality
     feature_prune_kwargs:
-      n_evaluated_features: 50
+      replace_bag: False
     _leaderboard_test: True
 
 prune_stoppinground:
