@@ -113,7 +113,7 @@ def run(dataset, config):
     for layer, layer_debug_info in enumerate(proxy_debug_info):
         pruned = len(layer_debug_info) > 0 and\
                 (layer_debug_info['score_improvement_from_proxy_yes'] > 0 or
-                 layer_debug_info['score_improvement_from_proxy_yes'] > 0)
+                 layer_debug_info['score_improvement_from_proxy_no'] > 0)
         info_content = {'name': config.name, 'fold': config.fold,
                         'pruned': pruned, 'layer': layer}
         info_content.update(layer_debug_info)
