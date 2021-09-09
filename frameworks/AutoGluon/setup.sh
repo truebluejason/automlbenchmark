@@ -29,7 +29,7 @@ else
     # VERSION="tabular_stack_holdout"
     # REPO="https://github.com/gradientsky/autogluon.git"
 
-    VERSION="proxy-select-old"
+    VERSION="experimental"
     REPO="https://github.com/truebluejason/autogluon.git"
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
