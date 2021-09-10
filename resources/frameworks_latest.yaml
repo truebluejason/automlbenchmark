@@ -32,6 +32,26 @@ AutoGluon_norepeat:
     num_bag_sets: 1
     _leaderboard_test: True
 
+lgb:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    hyperparameters:
+      GBM: {}
+    _leaderboard_test: True
+
+prune_lgb:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    num_bag_sets: 1
+    hyperparameters:
+      GBM: {}
+    feature_prune_kwargs:
+      k: 20
+    _leaderboard_test: True
+
 prune:
   extends: AutoGluon_bestquality
   params:
